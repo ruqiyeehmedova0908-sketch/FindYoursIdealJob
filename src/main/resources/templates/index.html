@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sənin İdeal İşini Tap</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💼</text></svg>">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <div class="logo">💼 Ideal job</div>
+            <div class="navbar-contact">
+                <button class="contact-toggle-navbar" onclick="toggleAboutWidget()">ℹ️ Haqqımızda</button>
+                <button class="contact-toggle-navbar" onclick="toggleContactWidget()">📞 Əlaqə</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Find yours ideal job </h1>
+            <p>Minlərlə vakansiya arasından sənə gözləyən imkanı kəşf et</p>
+        </div>
+    </header>
+
+    <!-- Tab Naviqasiyası -->
+    <div class="tabs-container">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab('vacancies', this)">💼 Vakansiyalar</button>
+                <button class="tab-button" onclick="switchTab('companies', this)">🏢 Şirkətlər</button>
+                <button class="tab-button" onclick="switchTab('categories', this)">📂 Kateqoriyalar</button>
+                <button class="tab-button" onclick="switchTab('industries', this)">🏭 Sənaye</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <!-- Vakansiyalar Sekmesi -->
+        <section id="vacancies-tab" class="tab-content active">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Vəzifə, şirkət və ya kateqoriya axtar...">
+                <button onclick="searchVacancies()">Axtar</button>
+            </div>
+
+            <section class="filters">
+                <h2>Filtrələr və Sıralama</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div class="filter-group">
+                        <label>Kateqoriya:</label>
+                        <select id="categoryFilter">
+                            <option value="">Hamısı</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Şirkət:</label>
+                        <select id="companyFilter">
+                            <option value="">Hamısı</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>İstiqdam Növü:</label>
+                        <select id="employmentFilter">
+                            <option value="">Hamısı</option>
+                            <option value="FULL_TIME">Tam Vaxtlı</option>
+                            <option value="PART_TIME">Yarım Vaxtlı</option>
+                            <option value="REMOTE">Uzaqdan</option>
+                            <option value="FREELANCE">Azad Fəaliyyət</option>
+                            <option value="DISTANCE">Məsafəli</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Məkan:</label>
+                        <select id="locationFilter">
+                            <option value="">Hamısı</option>
+                            <option value="BAKU">Bakı</option>
+                            <option value="GANDJA">Gəncə</option>
+                            <option value="SUMGAYIT">Sumqayıt</option>
+                            <option value="NAXCIVAN">Naxçıvan</option>
+                            <option value="LANKARAN">Lənkəran</option>
+                            <option value="MINGACHEVIR">Mingəçevir</option>
+                            <option value="SHAMAKHI">Şamaxı</option>
+                            <option value="SHIRVAN">Şirvan</option>
+                            <option value="SHEKI">Şəki</option>
+                            <option value="QUBA">Quba</option>
+                            <option value="QABALA">Qəbələ</option>
+                            <option value="SAKI">Saki</option>
+                            <option value="ASTARA">Astara</option>
+                            <option value="FIZULI">Fizuli</option>
+                            <option value="AGDAM">Ağdam</option>
+                            <option value="AGSU">Ağsu</option>
+                            <option value="ISMAILI">İsmayıllı</option>
+                            <option value="BALAKAN">Balakən</option>
+                            <option value="ZAQATALA">Zaqatala</option>
+                            <option value="TOVUZ">Tovuz</option>
+                            <option value="QAZAX">Qazax</option>
+                            <option value="LACHIN">Laçın</option>
+                            <option value="KUBATLI">Qubadlı</option>
+                            <option value="JEBRAYIL">Cəbrayıl</option>
+                            <option value="HADRUT">Hadrut</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Sıralama:</label>
+                        <select id="sortByOrder">
+                            <option value="">Seçin</option>
+                            <option value="BY_PUBLISHED_DATE">Yeni Əlavə Edilənlər</option>
+                            <option value="BY_SALARY">Maaşa Görə</option>
+                            <option value="POSITION_NAME_AZ">Vəzifə Adı (A-Z)</option>
+                            <option value="COMPANY_NAME_AZ">Şirkət Adı (A-Z)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Maaş Aralığı:</label>
+                        <select id="sortBySalary">
+                            <option value="">Seçin</option>
+                            <option value="BELOW_500">500 AZN altı</option>
+                            <option value="FROM_500_TO_1000">500 - 1000 AZN</option>
+                            <option value="FROM_1000_TO_2000">1000 - 2000 AZN</option>
+                            <option value="ABOVE_2000">2000 AZN üstü</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" style="align-self: flex-end;">
+                        <button onclick="applyAllFilters()" class="apply-button">Tətbiq Et</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vacancies Table -->
+            <table class="vacancies-table">
+                <thead>
+                    <tr>
+                        <th>Advertisements</th>
+                        <th>Provided By</th>
+                        <th>Published</th>
+                        <th>Deadline</th>
+                    </tr>
+                </thead>
+                <tbody id="vacanciesList">
+                    <tr><td colspan="4" class="loading">Yüklənir...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Şirkətlər Sekmesi -->
+        <section id="companies-tab" class="tab-content">
+            <h2>Şirkətlər</h2>
+            <div class="search-box" style="max-width: 500px; margin-bottom: 2rem;">
+                <input type="text" id="companiesSearchInput" placeholder="Şirkət axtar...">
+                <button onclick="searchCompanies()">Axtar</button>
+            </div>
+            <table class="entities-table">
+                <thead>
+                    <tr>
+                        <th>Şirkət Adı</th>
+                        <th>Elanlar</th>
+                    </tr>
+                </thead>
+                <tbody id="companiesList">
+                    <tr><td colspan="2" class="loading">Yüklənir...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Kateqoriyalar Sekmesi -->
+        <section id="categories-tab" class="tab-content">
+            <h2>Kateqoriyalar</h2>
+            <div class="search-box" style="max-width: 500px; margin-bottom: 2rem;">
+                <input type="text" id="categoriesSearchInput" placeholder="Kateqoriya axtar...">
+                <button onclick="searchCategories()">Axtar</button>
+            </div>
+            <table class="entities-table">
+                <thead>
+                    <tr>
+                        <th>Kateqoriya Adı</th>
+                    </tr>
+                </thead>
+                <tbody id="categoriesList">
+                    <tr><td class="loading">Yüklənir...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Sənaye Sekmesi -->
+        <section id="industries-tab" class="tab-content">
+            <h2>Sənaye</h2>
+            <div class="search-box" style="max-width: 500px; margin-bottom: 2rem;">
+                <input type="text" id="industriesSearchInput" placeholder="Sənaye axtar...">
+                <button onclick="searchIndustries()">Axtar</button>
+            </div>
+            <table class="entities-table">
+                <thead>
+                    <tr>
+                        <th>Sənaye Adı</th>
+                    </tr>
+                </thead>
+                <tbody id="industriesList">
+                    <tr><td class="loading">Yüklənir...</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- About Popup -->
+    <div class="about-popup" id="aboutPopup">
+        <div class="about-popup-header">
+            <h3>Haqqımızda</h3>
+            <button class="close-popup" onclick="toggleAboutWidget()">✕</button>
+        </div>
+        <div class="about-popup-content">
+            <p><strong>Sənin İdeal İşini Tap</strong> — Azərbaycanda iş axtaranlar və işəgötürənlər üçün ən etibarlı platformadır.</p>
+            
+            <h4>Missiyamız</h4>
+            <p>Hər bir insanın öz potensialını tam şəkildə reallaşdıra biləcəyi ideal işi tapmasına kömək etmək.</p>
+            
+            <h4>Vizyon</h4>
+            <p>Azərbaycanda iş bazarında ən müasır və istifadəçi-mərkəzli platformaya çevrilmək.</p>
+            
+            <h4>Xidmətlərimiz</h4>
+            <ul>
+                <li>✓ Minlərlə vakansiya</li>
+                <li>✓ Şirkət profilleri</li>
+                <li>✓ Kateqoriya filtrləri</li>
+                <li>✓ Sənaye seçimi</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contact Popup -->
+    <div class="contact-popup" id="contactPopup">
+        <div class="contact-popup-header">
+            <h3>Əlaqə</h3>
+            <button class="close-popup" onclick="toggleContactWidget()">✕</button>
+        </div>
+        <div class="contact-popup-content">
+            <div class="contact-item">
+                <strong>📍 Ünvan</strong>
+                <p>8 noyabr prospekti, Azure Biznes Mərkəzi, 18-ci mərtəbə, Bakı</p>
+            </div>
+            <div class="contact-item">
+                <strong>📞 Telefon</strong>
+                <a href="tel:+994124345030">+994 12 434 50 30</a>
+            </div>
+            <div class="contact-item">
+                <strong>📱 Mobil</strong>
+                <a href="tel:+994502056620">+994 50 205 66 20</a>
+            </div>
+            <div class="contact-item">
+                <strong>✉️ Email</strong>
+                <a href="mailto:info@idealjob.az">info@idealjob.az</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="vacancyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 İdeal İş Tap. Bütün hüquqlar qorunur.</p>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

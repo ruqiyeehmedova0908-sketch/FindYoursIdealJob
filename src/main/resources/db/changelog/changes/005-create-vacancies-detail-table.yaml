@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-create-vacancies-detail-table
+      author: system
+      changes:
+        - createTable:
+            tableName: vacancies_detail
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: vacancies_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_new
+                  type: boolean
+                  defaultValueBoolean: false
+              - column:
+                  name: deadline
+                  type: date
+              - column:
+                  name: published_date
+                  type: date
+              - column:
+                  name: requirements
+                  type: text
+              - column:
+                  name: responsibilities
+                  type: text
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: benefits
+                  type: text
+              - column:
+                  name: monthly_views
+                  type: integer
+                  defaultValueNumeric: 0
+        - addForeignKeyConstraint:
+            baseTableName: vacancies_detail
+            baseColumnNames: vacancies_id
+            referencedTableName: vacancies
+            referencedColumnNames: id
+            constraintName: fk_vacancies_detail_vacancies
+        - addUniqueConstraint:
+            tableName: vacancies_detail
+            columnNames: vacancies_id
+            constraintName: uk_vacancies_detail_vacancies_id

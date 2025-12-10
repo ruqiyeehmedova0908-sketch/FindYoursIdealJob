@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 008-add-contact-email-to-companies
+      author: system
+      changes:
+        - addColumn:
+            tableName: companies
+            columns:
+              - column:
+                  name: contact_email
+                  type: varchar(255)
+  - changeSet:
+      id: 008-add-contact-email-to-vacancies-detail
+      author: system
+      changes:
+        - addColumn:
+            tableName: vacancies_detail
+            columns:
+              - column:
+                  name: contact_email
+                  type: varchar(255)

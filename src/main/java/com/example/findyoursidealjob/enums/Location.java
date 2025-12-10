@@ -1,0 +1,30 @@
+package com.example.findyoursidealjob.enums;
+
+public enum Location {
+    BAKU,
+    GANDJA,
+    SUMGAYIT,
+    NAXCIVAN,
+    LANKARAN,
+    MINGACHEVIR,
+    SHAMAKHI,
+    SHIRVAN,
+    SHEKI,
+    QUBA,
+    QABALA,
+    SAKI,
+    ASTARA,
+    FIZULI,
+    AGDAM,
+    AGSU,
+    ISMAILI,
+    BALAKAN,
+    ZAQATALA,
+    TOVUZ,
+    QAZAX,
+    LACHIN,
+    KUBATLI,
+    JEBRAYIL,
+    HADRUT,
+    OFFICE
+}

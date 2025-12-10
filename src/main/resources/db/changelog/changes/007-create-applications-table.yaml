@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: 007-create-applications-table
+      author: system
+      changes:
+        - createTable:
+            tableName: applications
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: vacancies_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: applicant_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: applicant_email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cover_letter
+                  type: text
+              - column:
+                  name: resume_url
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: applied_date
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reviewed_date
+                  type: timestamp
+              - column:
+                  name: review_notes
+                  type: text
+              - column:
+                  name: application_location
+                  type: varchar(255)
+        - addForeignKeyConstraint:
+            baseTableName: applications
+            baseColumnNames: vacancies_id
+            referencedTableName: vacancies
+            referencedColumnNames: id
+            constraintName: fk_applications_vacancies

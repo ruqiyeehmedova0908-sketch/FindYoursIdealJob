@@ -1,0 +1,20 @@
+package com.example.findyoursidealjob.dao.repository;
+
+import com.example.findyoursidealjob.dao.entity.Categories;
+import com.example.findyoursidealjob.dao.entity.Companies;
+import com.example.findyoursidealjob.dao.entity.Vacancies;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
+
+@Repository
+public interface VacanciesRepository extends JpaRepository<Vacancies,Long>, JpaSpecificationExecutor<Vacancies> {
+    Optional<Vacancies> findByTitle(String title);
+
+    @Query("SELECT v FROM Vacancies v ORDER BY v.publishedDate DESC")
+    List<Vacancies> findAllOrderByPublishedDateDesc();
+}

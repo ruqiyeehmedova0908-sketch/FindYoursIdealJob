@@ -1,0 +1,262 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-insert-sample-data
+      author: system
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 0
+            sql: SELECT COUNT(*) FROM industries WHERE name = 'Information Technology'
+      changes:
+        - insert:
+            tableName: industries
+            columns:
+              - column:
+                  name: name
+                  value: "Information Technology"
+              - column:
+                  name: icon
+                  value: "💻"
+        - insert:
+            tableName: industries
+            columns:
+              - column:
+                  name: name
+                  value: "Finance"
+              - column:
+                  name: icon
+                  value: "💰"
+        - insert:
+            tableName: industries
+            columns:
+              - column:
+                  name: name
+                  value: "Healthcare"
+              - column:
+                  name: icon
+                  value: "🏥"
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: "Backend Developer"
+              - column:
+                  name: icon
+                  value: "⚙️"
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: "Frontend Developer"
+              - column:
+                  name: icon
+                  value: "🎨"
+        - insert:
+            tableName: categories
+            columns:
+              - column:
+                  name: name
+                  value: "Full Stack Developer"
+              - column:
+                  name: icon
+                  value: "🚀"
+        - insert:
+            tableName: companies
+            columns:
+              - column:
+                  name: name
+                  value: "Tech Corp"
+              - column:
+                  name: employee_count
+                  value: 500
+              - column:
+                  name: icon
+                  value: "🏢"
+        - insert:
+            tableName: companies
+            columns:
+              - column:
+                  name: name
+                  value: "Innovation Labs"
+              - column:
+                  name: employee_count
+                  value: 150
+              - column:
+                  name: icon
+                  value: "🔬"
+        - insert:
+            tableName: companies
+            columns:
+              - column:
+                  name: name
+                  value: "Digital Solutions"
+              - column:
+                  name: employee_count
+                  value: 300
+              - column:
+                  name: icon
+                  value: "💡"
+        - insert:
+            tableName: vacancies
+            columns:
+              - column:
+                  name: title
+                  value: "Senior Java Developer"
+              - column:
+                  name: companies_id
+                  value: 1
+              - column:
+                  name: industries_id
+                  value: 1
+              - column:
+                  name: categories_id
+                  value: 1
+              - column:
+                  name: description
+                  value: "We are looking for an experienced Java developer with 5+ years of experience"
+              - column:
+                  name: salary_m
+                  value: 5000
+              - column:
+                  name: requirements
+                  value: "Java, Spring Boot, PostgreSQL, Docker"
+              - column:
+                  name: salary
+                  value: "ABOVE_2000"
+              - column:
+                  name: employment_type
+                  value: "FULL_TIME"
+              - column:
+                  name: location
+                  value: "BAKU"
+              - column:
+                  name: degree_of_duty
+                  value: "MID_SENIOR"
+              - column:
+                  name: order_by
+                  value: "BY_SALARY"
+              - column:
+                  name: city
+                  value: "Baku"
+              - column:
+                  name: address
+                  value: "Tech Park, Baku"
+              - column:
+                  name: published_date
+                  valueDate: "2025-12-01"
+              - column:
+                  name: deadline
+                  valueDate: "2025-12-31"
+              - column:
+                  name: is_new
+                  value: "true"
+        - insert:
+            tableName: vacancies
+            columns:
+              - column:
+                  name: title
+                  value: "React Frontend Developer"
+              - column:
+                  name: companies_id
+                  value: 2
+              - column:
+                  name: industries_id
+                  value: 1
+              - column:
+                  name: categories_id
+                  value: 2
+              - column:
+                  name: description
+                  value: "Join our team as a React developer and build amazing user interfaces"
+              - column:
+                  name: salary_m
+                  value: 4000
+              - column:
+                  name: requirements
+                  value: "React, JavaScript, CSS, HTML"
+              - column:
+                  name: salary
+                  value: "FROM_1000_TO_2000"
+              - column:
+                  name: employment_type
+                  value: "FULL_TIME"
+              - column:
+                  name: location
+                  value: "GANDJA"
+              - column:
+                  name: degree_of_duty
+                  value: "ASSOCIATE"
+              - column:
+                  name: order_by
+                  value: "BY_PUBLISHED_DATE"
+              - column:
+                  name: city
+                  value: "Baku"
+              - column:
+                  name: address
+                  value: "Innovation Labs, Baku"
+              - column:
+                  name: published_date
+                  valueDate: "2025-12-05"
+              - column:
+                  name: deadline
+                  valueDate: "2025-12-25"
+              - column:
+                  name: is_new
+                  value: "true"
+        - insert:
+            tableName: vacancies
+            columns:
+              - column:
+                  name: title
+                  value: "Full Stack Developer"
+              - column:
+                  name: companies_id
+                  value: 3
+              - column:
+                  name: industries_id
+                  value: 1
+              - column:
+                  name: categories_id
+                  value: 3
+              - column:
+                  name: description
+                  value: "We need a full stack developer to work on our web applications"
+              - column:
+                  name: salary_m
+                  value: 4500
+              - column:
+                  name: requirements
+                  value: "Node.js, React, MongoDB, AWS"
+              - column:
+                  name: salary
+                  value: "4500-6000"
+              - column:
+                  name: employment_type
+                  value: "FULL_TIME"
+              - column:
+                  name: location
+                  value: "SUMGAYIT"
+              - column:
+                  name: degree_of_duty
+                  value: "MID_SENIOR"
+              - column:
+                  name: order_by
+                  value: "POPULAR_CATEGORY"
+              - column:
+                  name: city
+                  value: "Baku"
+              - column:
+                  name: address
+                  value: "Digital Solutions, Baku"
+              - column:
+                  name: published_date
+                  valueDate: "2025-12-03"
+              - column:
+                  name: deadline
+                  valueDate: "2025-12-20"
+              - column:
+                  name: is_new
+                  value: "false"
